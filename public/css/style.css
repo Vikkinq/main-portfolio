@@ -1,0 +1,13 @@
+/* Soft vignette blobs */
+.bg-blobs::before,
+.bg-blobs::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70vh;
+  filter: blur(120px);
+  z-index: -1;
+  background: radial-gradient(600px 400px at 70% 40%, rgba(56, 189, 248, 0.15), transparent 60%),
+    radial-gradient(500px 300px at 30% 60%, rgba(139, 92, 246, 0.14), transparent 60%),
+    radial-gradient(600px 400px at 50% 10%, rgba(16, 185, 129, 0.12), transparent 60%);
+}

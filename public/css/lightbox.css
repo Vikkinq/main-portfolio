@@ -1,0 +1,64 @@
+/* Make images opt-in clickable zooms */
+img[data-lightbox],
+a[data-lightbox] img {
+  cursor: pointer;
+}
+
+/* Overlay shell (hidden by default) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+/* Visible state */
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* The big image */
+.lightbox__img {
+  max-width: min(92vw, 1200px);
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(0.98);
+  transition: transform 0.2s ease;
+  cursor: auto;
+}
+
+/* Slight scale-in when opening */
+.lightbox.is-open .lightbox__img {
+  transform: scale(1);
+}
+
+/* Close button */
+.lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+/* Lock page scroll while open */
+body.lightbox-open {
+  overflow: hidden;
+}
